@@ -1,18 +1,18 @@
-import React, { useContext } from "react";
-import Input from "../Forms/Input";
-import Button from "../Forms/Button";
-import Error from '../Helper/Error'
-import useForm from "../../Hooks/useForm";
-import { USER_POST } from "../../Api";
-import { UserContext } from "../../UserContext";
-import useFetch from "../../Hooks/useFetch";
+import React from 'react';
+import Input from '../Forms/Input';
+import Button from '../Forms/Button';
+import Error from '../Helper/Error';
+import useForm from '../../Hooks/useForm';
+import { USER_POST } from '../../Api';
+import { UserContext } from '../../UserContext';
+import useFetch from '../../Hooks/useFetch';
 
 const LoginCreate = () => {
   const username = useForm();
-  const email = useForm("email");
-  const password = useForm("password");
+  const email = useForm('email');
+  const password = useForm();
 
-  const { userLogin } = useContext(UserContext);
+  const { userLogin } = React.useContext(UserContext);
   const { loading, error, request } = useFetch();
 
   async function handleSubmit(event) {
@@ -38,7 +38,7 @@ const LoginCreate = () => {
         ) : (
           <Button>Cadastrar</Button>
         )}
-        <Error error={error}/>
+        <Error error={error} />
       </form>
     </section>
   );
