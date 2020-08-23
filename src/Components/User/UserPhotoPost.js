@@ -7,16 +7,18 @@ import Button from '../Forms/Button';
 import Error from '../Helper/Error';
 import { PHOTO_POST } from '../../Api';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const UserPhotoPost = () => {
   const nome = useForm();
   const peso = useForm('number');
   const idade = useForm('number');
-  const [img, setImg] = React.useState({});
+  const [img, setImg] = useState({});
   const { data, error, loading, request } = useFetch();
   const navigate = useNavigate();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (data) navigate('/conta');
   }, [data, navigate]);
 
